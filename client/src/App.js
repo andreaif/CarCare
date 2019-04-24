@@ -16,6 +16,7 @@ import Register from "./components/auth/Register";
 import Login from "./components/auth/Login";
 import Dashboard from "./components/dashboard/Dashboard";
 import CreateCarProfile from "./components/create-carprofile/CreateCarProfile";
+import EditCarProfile from './components/edit-carprofile/EditCarProfile';
 
 import "./App.css";
 
@@ -55,6 +56,9 @@ class App extends Component {
               </Switch>
               <Switch>
                 <PrivateRoute exact path="/create-carprofile" component={CreateCarProfile} />
+              </Switch>
+              <Switch>
+                <PrivateRoute exact path="/edit-carprofile" component={EditCarProfile} />
               </Switch>
             </div>
             <Footer />

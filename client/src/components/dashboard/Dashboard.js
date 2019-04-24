@@ -2,14 +2,20 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { getCurrentProfile } from "../../actions/carprofileActions";
+import { getCurrentProfile } from "../../actions/carprofileActions"; //, deleteCarProfile
 import Spinner from "../common/Spinner";
+import CarProfileActions from "./CarProfileActions";
 
 
 class Dashboard extends Component {
   componentDidMount() {
     this.props.getCurrentProfile();
   }
+
+  //onDeleteClick() {
+  //  this.props.deleleCarProfile();
+  //}
+
 
   render() {
     const { user } = this.props.auth;
@@ -22,7 +28,16 @@ class Dashboard extends Component {
     } else {
       // Check if logged in user has car profile data
       if (Object.keys(profile).length > 0) {
-        dashboardContent = <h4>TODO: DISPLAY PROFILE</h4>;
+        dashboardContent = (
+          <div>
+            <p className="lead text-muted">Welcome <Link to={`/profile/${profile.handle}`}>{user.name}</Link></p>
+            <CarProfileActions />
+            {/*TODO maintenance and mileage*/}
+            <div style={{ marginBottom: '60px' }} />
+            {/*<button onclick={this.onDeleteClick.bind(this)} className="btn btn-danger"> Delete my CarProfile
+            </button>*/}
+          </div>
+        );
       } else {
         // User is logged in but has no car profile
         dashboardContent = (
@@ -54,6 +69,7 @@ class Dashboard extends Component {
 
 Dashboard.propTypes = {
   getCurrentProfile: PropTypes.func.isRequired,
+  //deleteCarProfile: PropTypes.func.isRequired,
   auth: PropTypes.object.isRequired,
   profile: PropTypes.object.isRequired
 };
@@ -65,5 +81,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { getCurrentProfile }
+  { getCurrentProfile }//,deleteCarProfile//}
 )(Dashboard);
