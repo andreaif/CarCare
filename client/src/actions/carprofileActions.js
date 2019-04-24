@@ -26,18 +26,18 @@ export const getCurrentProfile = () => dispatch => {
     );
 };
 
-// Create Car Profile
+// Create Profile
 export const createcarProfile = (profileData, history) => dispatch => {
-  axios
-    .post('/api/carprofile', profileData)
-    .then(res => history.push('/dashboard'))
-    .catch(err =>
-      dispatch({
-        type: GET_ERRORS,
-        payload: err.response.data
-      })
-    );
-};
+    axios
+      .post('/api/carprofile', profileData)
+      .then(res => history.push('/dashboard'))
+      .catch(err =>
+        dispatch({
+          type: GET_ERRORS,
+          payload: err.response.data
+        })
+      );
+  };
 
 // Profile loading
 export const setProfileLoading = () => {
