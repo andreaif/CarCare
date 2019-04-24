@@ -149,7 +149,7 @@ router.post('/maintenance', passport.authenticate('jwt', { session: false }), (r
         datecompleted: req.body.datecompleted,
         nextservicedue: req.body.nextservicedue,
         comments: req.body.comments,
-      }
+      };
 
       //Add to manintenance array
       carprofile.maintenance.unshift(newMaintenance);
@@ -208,8 +208,9 @@ router.post('/mileage', passport.authenticate('jwt', { session: false }), (req, 
       carprofile.mileage.unshift(newMileage);
 
       carprofile.save().then(carprofile => res.json(carprofile));
-    })
-});
+    });
+}
+);
 
 // @route   DELETE api/CarProfile/mileage/:mil_id
 // @desc    Delete mileage from carprofile
