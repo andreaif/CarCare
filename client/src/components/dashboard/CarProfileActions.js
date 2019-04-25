@@ -15,6 +15,10 @@ const CarProfileActions = () => {
         <i className="fas fa-graduation-cap text-info mr-1" />
         Add Mileage
       </Link>
+      <Link to="/Videos" className="btn btn-light">
+        <i className="fas fa-video text-info mr-1" />
+        Intructional Videos
+      </Link>
     </div>
   );
 };

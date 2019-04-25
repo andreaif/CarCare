@@ -97,6 +97,10 @@ class Register extends Component {
                 />
                 <input type="submit" className="btn btn-info btn-block mt-4" />
               </form>
+              <hr></hr>
+
+              <p className="gravataricon" >Don't have a Gravatar account? Click Here!</p>
+              <a href="https://en.gravatar.com/" target="_blank"> <button type="button" className="btn btn-info text-white">Create a Gravatar Account</button></a>
             </div>
           </div>
         </div>

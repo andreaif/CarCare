@@ -17,7 +17,8 @@ import Login from "./components/auth/Login";
 import Dashboard from "./components/dashboard/Dashboard";
 import CreateCarProfile from "./components/create-carprofile/CreateCarProfile";
 import EditCarProfile from './components/edit-carprofile/EditCarProfile';
-
+import AddMaintenance from './components/add-credentials/AddMaintenance';
+import AddMileage from './components/add-credentials/AddMileage';
 import "./App.css";
 
 // Check for token
@@ -59,6 +60,12 @@ class App extends Component {
               </Switch>
               <Switch>
                 <PrivateRoute exact path="/edit-carprofile" component={EditCarProfile} />
+              </Switch>
+              <Switch>
+                <PrivateRoute exact path="/add-maintenance" component={AddMaintenance} />
+              </Switch>
+              <Switch>
+                <PrivateRoute exact path="/add-mileage" component={AddMileage} />
               </Switch>
             </div>
             <Footer />

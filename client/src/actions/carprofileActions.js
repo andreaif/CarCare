@@ -5,7 +5,7 @@ import {
   PROFILE_LOADING,
   CLEAR_CURRENT_PROFILE,
   GET_ERRORS,
-  //SET_CURRENT_USER
+  SET_CURRENT_USER
 } from './types';
 
 // Get current profile
@@ -40,25 +40,91 @@ export const createcarProfile = (profileData, history) => dispatch => {
     );
 };
 
+//AddMaintenance
+export const addMaintenance = (addMaint, history) => dispatch => {
+  axios
+    .post('api/carprofile/maintenance', addMaint)
+    .then(res => history.push('/dashboard'))
+    .catch(err =>
+      dispatch({
+        type: GET_ERRORS,
+        payload: err.response.data
+      })
+    );
+}
+
+// Delete Maintenance
+export const deleteMaintenance = id => dispatch => {
+  axios
+    .delete(`/api/carprofile/maintenance/${id}`)
+    .then(res =>
+      dispatch({
+        type: GET_PROFILE,
+        payload: res.data
+      })
+    )
+    .catch(err =>
+      dispatch({
+        type: GET_ERRORS,
+        payload: err.response.data
+      })
+    );
+};
+
+
+
+
+
+
+//AddMileage
+export const addMileage = (addMil, history) => dispatch => {
+  axios
+    .post('api/carprofile/mileage', addMil)
+    .then(res => history.push('/dashboard'))
+    .catch(err =>
+      dispatch({
+        type: GET_ERRORS,
+        payload: err.response.data
+      })
+    );
+}
+
+// Delete Mileage
+export const deleteMileage = id => dispatch => {
+  axios
+    .delete(`/api/carprofile/mileage/${id}`)
+    .then(res =>
+      dispatch({
+        type: GET_PROFILE,
+        payload: res.data
+      })
+    )
+    .catch(err =>
+      dispatch({
+        type: GET_ERRORS,
+        payload: err.response.data
+      })
+    );
+};
 
 //Delete Car Profile
-//export const deleteCarProfile = () => dispatch => {
-//  if (window.confirm('Are you sure? This can NOT be undone!')) {
-//    axios
-//      .delete('/api/carprofile')
-//      .then(res =>
-//        dispatch({
-//          type: SET_CURRENT_USER,
-//          payload: {}
-//        })
-//      ).catch(ERR =>
-//        dispatch({
-//          TYPE: GET_ERRORS,
-//          payload: ERR.RESPONSE.DATA
-//        })
-//      );
-//  }
-// }
+export const deleteCarProfile = () => dispatch => {
+  if (window.confirm('Are you sure? This can NOT be undone!')) {
+    axios
+      .delete('/api/carprofile')
+      .then(res =>
+        dispatch({
+          type: SET_CURRENT_USER,
+          payload: {}
+        })
+      ).catch(ERR =>
+        dispatch({
+          TYPE: GET_ERRORS,
+          payload: ERR.RESPONSE.DATA
+        })
+      );
+  }
+}
 
 
 

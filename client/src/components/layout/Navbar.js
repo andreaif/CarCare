@@ -57,33 +57,35 @@ class Navbar extends Component {
     );
 
     return (
-      <nav className="navbar navbar-expand-sm navbar-dark bg-dark mb-4">
-        <div className="container">
-          <Link className="navbar-brand" to="/">
-            CAR CARE
+      <div class="sticky-top">
+        <nav className="navbar navbar-expand-sm navbar-dark bg-dark mb-4">
+          <div className="container">
+            <Link className="navbar-brand" to="/">
+              CARCARE
           </Link>
-          <button
-            className="navbar-toggler"
-            type="button"
-            data-toggle="collapse"
-            data-target="#mobile-nav"
-          >
-            <span className="navbar-toggler-icon" />
-          </button>
+            <button
+              className="navbar-toggler"
+              type="button"
+              data-toggle="collapse"
+              data-target="#mobile-nav"
+            >
+              <span className="navbar-toggler-icon" />
+            </button>
 
-          <div className="collapse navbar-collapse" id="mobile-nav">
-            <ul className="navbar-nav mr-auto">
-              <li className="nav-item">
-                <Link className="nav-link" to="/carprofile">
-                  {" "}
-                  Cars
+            <div className="collapse navbar-collapse" id="mobile-nav">
+              <ul className="navbar-nav mr-auto">
+                <li className="nav-item">
+                  <Link className="nav-link" to="/carprofile">
+                    {" "}
+                    Cars
                 </Link>
-              </li>
-            </ul>
-            {isAuthenticated ? authLinks : guestLinks}
+                </li>
+              </ul>
+              {isAuthenticated ? authLinks : guestLinks}
+            </div>
           </div>
-        </div>
-      </nav>
+        </nav>
+      </div>
     );
   }
 }

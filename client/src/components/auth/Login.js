@@ -82,6 +82,14 @@ class Login extends Component {
               </form>
             </div>
           </div>
+
+          <div className="middle text-center">
+            <hr></hr>
+            -------- or Sign in using --------
+            <hr></hr>
+          </div>
+          {/* add facebook or google authentication*/}
+
         </div>
       </div>
     );

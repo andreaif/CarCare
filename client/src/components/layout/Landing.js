@@ -16,8 +16,8 @@ class Landing extends Component {
         <div className="dark-overlay landing-inner text-light">
           <div className="container">
             <div className="row">
-              <div className="col-md-12 text-center">
-                <h1 className="display-3 mb-4">Welcome to Car Care
+              <div className="col-md-12 pt-5">
+                <h1 className="display-3 text-white">Welcome to CarCare
               </h1>
                 <p className="lead">
                   {' '}
@@ -33,6 +33,7 @@ class Landing extends Component {
     );
   }
 }
+
 Landing.propTypes = {
   auth: PropTypes.object.isRequired
 };

@@ -2,19 +2,20 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { getCurrentProfile } from "../../actions/carprofileActions"; //, deleteCarProfile
+import { getCurrentProfile, deleteCarProfile } from "../../actions/carprofileActions"
 import Spinner from "../common/Spinner";
 import CarProfileActions from "./CarProfileActions";
-
+import Maintenance from './Maintenance';
+import Mileage from './Mileage';
 
 class Dashboard extends Component {
   componentDidMount() {
     this.props.getCurrentProfile();
   }
 
-  //onDeleteClick() {
-  //  this.props.deleleCarProfile();
-  //}
+  onDeleteClick() {
+    this.props.deleleCarProfile();
+  }
 
 
   render() {
@@ -32,10 +33,11 @@ class Dashboard extends Component {
           <div>
             <p className="lead text-muted">Welcome <Link to={`/profile/${profile.handle}`}>{user.name}</Link></p>
             <CarProfileActions />
-            {/*TODO maintenance and mileage*/}
+            <Maintenance maintenance={profile.maintenance} />
+            <Mileage mileage={profile.mileage} />
             <div style={{ marginBottom: '60px' }} />
-            {/*<button onclick={this.onDeleteClick.bind(this)} className="btn btn-danger"> Delete my CarProfile
-            </button>*/}
+            <button onclick={this.onDeleteClick.bind(this)} className="btn btn-danger"> Delete my CarProfile
+            </button>
           </div>
         );
       } else {
@@ -69,7 +71,7 @@ class Dashboard extends Component {
 
 Dashboard.propTypes = {
   getCurrentProfile: PropTypes.func.isRequired,
-  //deleteCarProfile: PropTypes.func.isRequired,
+  deleteCarProfile: PropTypes.func.isRequired,
   auth: PropTypes.object.isRequired,
   profile: PropTypes.object.isRequired
 };
@@ -81,5 +83,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { getCurrentProfile }//,deleteCarProfile//}
+  { getCurrentProfile, deleteCarProfile }
 )(Dashboard);
