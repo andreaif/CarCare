@@ -55,8 +55,10 @@ class AddMileage extends Component {
       { label: '* Select Purpose', value: 0 },
       { label: 'Business', value: 'Business' },
       { label: 'Personal', value: 'Personal' }
-    ];
+    ]
+
     return (
+
       <div className="add-mileage">
         <div className="container">
           <div className="col-md-8 m-auto">
@@ -112,13 +114,15 @@ class AddMileage extends Component {
               <label htmlFor="totalmileage" className="form-check-label">
                 Total Mileage
                   </label>
-
+              {/*Fix for totalmileage to show on the mileage records table*/}
               <TextFieldGroup
                 placeholder="Total Mileage"
                 name="totalmileage"
                 value={this.state.odometerend - this.state.odometerstart}
                 error={errors.totalmileage}
               />
+
+
               <label htmlFor="Comments" className="form-check-label">
                 Comments
                   </label>
