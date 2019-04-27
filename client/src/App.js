@@ -19,6 +19,7 @@ import CreateCarProfile from "./components/create-carprofile/CreateCarProfile";
 import EditCarProfile from './components/edit-carprofile/EditCarProfile';
 import AddMaintenance from './components/add-credentials/AddMaintenance';
 import AddMileage from './components/add-credentials/AddMileage';
+import AddExpense from './components/add-credentials/AddExpense';
 import "./App.css";
 
 // Check for token
@@ -66,6 +67,9 @@ class App extends Component {
               </Switch>
               <Switch>
                 <PrivateRoute exact path="/add-mileage" component={AddMileage} />
+              </Switch>
+              <Switch>
+                <PrivateRoute exact path="/add-expense" component={AddExpense} />
               </Switch>
             </div>
             <Footer />

@@ -5,6 +5,7 @@ import TextAreaFieldGroup from '../common/TextAreaFieldGroup';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { addMaintenance } from '../../actions/carprofileActions';
+import SelectListGroup from '../common/SelectListGroup';
 
 class AddMaintenance extends Component {
   constructor(props) {
@@ -43,6 +44,21 @@ class AddMaintenance extends Component {
 
   render() {
     const { errors } = this.state;
+
+    //Select options for status
+    const options = [
+      { label: '* Select Type of Maintenance', value: 0 },
+      { label: 'Oil/oil filter changed', value: 'Oil/oil filter changed' },
+      { label: 'Wiper blades replacement', value: 'Wiper blades replacement' },
+      { label: 'Replace air filter', value: 'Replace air filter' },
+      { label: 'New tires', value: 'New tires' },
+      { label: 'Battery replacement', value: 'Battery replacement' },
+      { label: 'Brake work', value: 'Brake work' },
+      { label: 'Antifreeze added', value: 'Antifreeze added' },
+      { label: 'Engine tune-up', value: 'Engine tune-up' },
+      { label: 'Wheels aligned/balanced', value: 'Wheels aligned/balanced' },
+    ];
+
     return (
       <div className="add-maintenance">
         <div className="container">
@@ -57,9 +73,11 @@ class AddMaintenance extends Component {
               <label htmlFor="typeofmaintenance" className="form-check-label">
                 Type of Maintenance
                   </label>
-              <TextFieldGroup
+
+              <SelectListGroup
                 placeholder="* Type of Maintenance"
                 name="typeofmaintenance"
+                options={options}
                 value={this.state.typeofmaintenance}
                 onChange={this.onChange}
                 error={errors.typeofmaintenance}

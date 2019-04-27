@@ -111,19 +111,19 @@ class AddMileage extends Component {
               <label htmlFor="totalmileage" className="form-check-label">
                 Total Mileage
                   </label>
-
+              {/*Fix for totalmileage to show on the mileage records table*/}
               <TextFieldGroup
-                placeholder="* Total Mileage"
+                placeholder="Total Mileage"
                 name="totalmileage"
-                value={this.state.totalmileage}
-                onChange={this.onChange}
+                value={this.state.odometerend - this.state.odometerstart}
+                output={this.state.totalmileage}
                 error={errors.totalmileage}
               />
               <label htmlFor="Comments" className="form-check-label">
                 Comments
                   </label>
               <TextFieldGroup
-                placeholder="* Comments"
+                placeholder=" Comments"
                 name="mcomments"
                 value={this.state.mcomments}
                 onChange={this.onChange}

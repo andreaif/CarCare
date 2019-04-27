@@ -77,6 +77,24 @@ const CarProfileSchema = new Schema({
       },
     }
   ],
+  expense: [
+    {
+      typeofexpense: {
+        type: [String],
+        required: true
+      },
+      edate: {
+        type: Date,
+        required: true
+      },
+      description: {
+        type: String,
+      },
+      totalamount: {
+        type: Number,
+      }
+    }
+  ],
   Date: {
     type: Date,
     default: Date.now

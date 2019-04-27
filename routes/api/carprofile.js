@@ -7,6 +7,7 @@ const passport = require('passport');
 const validateCarProfileInput = require('../../validation/carprofile');
 const validateMaintenanceInput = require('../../validation/maintenance');
 const validateMileageInput = require('../../validation/mileage');
+const validateExpenseInput = require('../../validation/expense');
 
 // Load carprofile Model
 const CarProfile = require('../../models/CarProfile');
@@ -226,6 +227,59 @@ router.delete('/mileage/:mil_id', passport.authenticate('jwt', { session: false 
 
       //Splice out of array
       carprofile.mileage.splice(removeIndex, 1);
+
+      //Save
+      carprofile.save().then(carprofile => res.json(carprofile));
+    })
+    .catch(err => res.status(404).json(err));
+}
+);
+
+
+
+// @route   POST api/CarProfile/addexpense
+// @desc    Add expense
+// @access  Private
+router.post('/expense', passport.authenticate('jwt', { session: false }), (req, res) => {
+
+  const { errors, isValid } = validateExpenseInput(req.body);
+
+  //Check Validation
+  if (!isValid) {
+    //Return any errors with 400 status 
+    return res.status(400).json(errors);
+  }
+
+  CarProfile.findOne({ user: req.user.id })
+    .then(carprofile => {
+      const newExpense = {
+        typeofexpense: req.body.typeofexpense,
+        edate: req.body.edate,
+        description: req.body.description,
+        totalamount: req.body.totalamount,
+      };
+
+      //Add to manintenance array
+      carprofile.expense.unshift(newExpense);
+
+      carprofile.save().then(carprofile => res.json(carprofile));
+    });
+});
+
+// @route   DELETE api/CarProfile/exp/:expt_id
+// @desc    Delete expense from carprofile
+// @access  Private
+router.delete('/expense/:expt_id', passport.authenticate('jwt', { session: false }), (req, res) => {
+
+  CarProfile.findOne({ user: req.user.id })
+    .then(carprofile => {
+      //Get remove index
+      const removeIndex = carprofile.expense
+        .map(item => item.id)
+        .indexOf(req.param.expt_id);
+
+      //Splice out of array
+      carprofile.expense.splice(removeIndex, 1);
 
       //Save
       carprofile.save().then(carprofile => res.json(carprofile));

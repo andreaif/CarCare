@@ -107,6 +107,38 @@ export const deleteMileage = id => dispatch => {
     );
 };
 
+
+//AddExpense
+export const addExpense = (addExp, history) => dispatch => {
+  axios
+    .post('api/carprofile/expense', addExp)
+    .then(res => history.push('/dashboard'))
+    .catch(err =>
+      dispatch({
+        type: GET_ERRORS,
+        payload: err.response.data
+      })
+    );
+}
+
+// Delete Expense
+export const deleteExpense = id => dispatch => {
+  axios
+    .delete(`/api/carprofile/expense/${id}`)
+    .then(res =>
+      dispatch({
+        type: GET_PROFILE,
+        payload: res.data
+      })
+    )
+    .catch(err =>
+      dispatch({
+        type: GET_ERRORS,
+        payload: err.response.data
+      })
+    );
+};
+
 //Delete Car Profile
 export const deleteCarProfile = () => dispatch => {
   if (window.confirm('Are you sure? This can NOT be undone!')) {

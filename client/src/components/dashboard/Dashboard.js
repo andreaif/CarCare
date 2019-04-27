@@ -7,6 +7,7 @@ import Spinner from "../common/Spinner";
 import CarProfileActions from "./CarProfileActions";
 import Maintenance from './Maintenance';
 import Mileage from './Mileage';
+import Expense from './Expense';
 
 class Dashboard extends Component {
   componentDidMount() {
@@ -35,6 +36,7 @@ class Dashboard extends Component {
             <CarProfileActions />
             <Maintenance maintenance={profile.maintenance} />
             <Mileage mileage={profile.mileage} />
+            <Expense expense={profile.expense} />
             <div style={{ marginBottom: '60px' }} />
             <button onclick={this.onDeleteClick.bind(this)} className="btn btn-danger"> Delete my CarProfile
             </button>
