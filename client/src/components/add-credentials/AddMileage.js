@@ -30,12 +30,13 @@ class AddMileage extends Component {
 
   onSubmit(e) {
     e.preventDefault();
+    var totmil = this.state.odometerend - this.state.odometerstart;
     const addMil = {
       mdate: this.state.mdate,
       purpose: this.state.purpose,
       odometerstart: this.state.odometerstart,
       odometerend: this.state.odometerend,
-      totalmileage: this.state.totalmileage,
+      totalmileage: totmil,
       mcomments: this.state.mcomments
     };
     this.props.addMileage(addMil, this.props.history);
@@ -111,12 +112,11 @@ class AddMileage extends Component {
               <label htmlFor="totalmileage" className="form-check-label">
                 Total Mileage
                   </label>
-              {/*Fix for totalmileage to show on the mileage records table*/}
+
               <TextFieldGroup
                 placeholder="Total Mileage"
                 name="totalmileage"
                 value={this.state.odometerend - this.state.odometerstart}
-                output={this.state.totalmileage}
                 error={errors.totalmileage}
               />
               <label htmlFor="Comments" className="form-check-label">
