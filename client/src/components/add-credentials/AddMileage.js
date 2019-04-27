@@ -5,6 +5,7 @@ import TextAreaFieldGroup from '../common/TextAreaFieldGroup';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { addMileage } from '../../actions/carprofileActions';
+import SelectListGroup from '../common/SelectListGroup';
 
 class AddMileage extends Component {
   constructor(props) {
@@ -47,6 +48,13 @@ class AddMileage extends Component {
 
   render() {
     const { errors } = this.state;
+
+    //Select options for status
+    const options = [
+      { label: '* Select Purpose', value: 0 },
+      { label: 'Business', value: 'Business' },
+      { label: 'Personal', value: 'Personal' }
+    ];
     return (
       <div className="add-mileage">
         <div className="container">
@@ -72,9 +80,10 @@ class AddMileage extends Component {
               <label htmlFor="purpose" className="form-check-label">
                 Purpose
                   </label>
-              <TextFieldGroup
+              <SelectListGroup
                 placeholder="* Purpose"
                 name="purpose"
+                options={options}
                 value={this.state.purpose}
                 onChange={this.onChange}
                 error={errors.purpose}
@@ -102,6 +111,7 @@ class AddMileage extends Component {
               <label htmlFor="totalmileage" className="form-check-label">
                 Total Mileage
                   </label>
+
               <TextFieldGroup
                 placeholder="* Total Mileage"
                 name="totalmileage"
