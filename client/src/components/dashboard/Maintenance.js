@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import Moment from 'react-moment';
+import ReactToExcel from 'react-html-table-to-excel';
 import { deleteMaintenance } from '../../actions/carprofileActions';
+
 
 class Maintenance extends Component {
   onDeleteClick(id) {
@@ -35,7 +37,8 @@ class Maintenance extends Component {
     return (
       <div>
         <h4 className="mb-4">Maintenance Records</h4>
-        <table className="table">
+        <ReactToExcel className="btn" table="mntrecord" filename="mnt" sheet="sheet 1" button="DOWNLOAD" />
+        <table className="table" id="mntrecord" >
           <thead>
             <tr>
               <th>Type of Maintenance</th>
